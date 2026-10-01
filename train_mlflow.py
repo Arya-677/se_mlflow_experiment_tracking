@@ -30,7 +30,7 @@ if __name__ == "__main__":
         accuracy = accuracy_score(y_test, y_pred)
         mlflow.log_metric("accuracy", accuracy)
         
-        mlflow.sklearn.log_model(model, "random_forest_model")
+        mlflow.sklearn.log_model(model, "random_forest_model", skops_trusted_types=["sklearn.tree._tree.Tree"])
         
         print(f"Model trained and logged to MLflow with accuracy: {accuracy:.4f}")
         print("Run `mlflow ui` to view experiments at http://localhost:5000")
